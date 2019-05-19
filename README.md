@@ -79,14 +79,28 @@ helm install helm/demo-joomla/ --name demo-joomla-$(date +%Y%m%d%H%M%S) --set ma
 
 
 # demo-joomla service
-
+This service is outside of the chart in order to allow blue/green deployments by modifying its selector.
+## Example service
 Create the service using
 ```
-kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/service.yaml.example
 ```
 
-This service is outside of the chart in order to allow blue/green deployments by modifying its selector.
+## Generate service.yaml from a template
+To avoid manual changes to the service.yaml, a Jinja2 template is used instead.
 
+As a prerequisite, the jinja2 module needs to be installed
+```
+pip3 install jinja2
+```
+To render k8s/service.yaml
+```
+python3 render.py -v <appVersion>
+# Example:
+python3 render.py -v 3.9.6
+```
+
+## Port Forwarding
 Expose the service locally using port-forward
 ```
 kubectl port-forward svc/demo-joomla  8080:8080
