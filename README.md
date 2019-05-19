@@ -49,7 +49,8 @@ The database is deployed independently from Joomla
 https://github.com/helm/charts/blob/master/stable/mariadb
 
 ```
-read -s MARIADB_PASSWORD && \
+read -sp "Enter value for MARIADB_PASSWORD=" MARIADB_PASSWORD && \
+echo && \
 kubectl create secret generic joomla-db --from-literal=mariadb-root-password=${MARIADB_PASSWORD}
 ```
 
@@ -73,7 +74,8 @@ helm install helm/demo-joomla/ --name demo-joomla-$(date +%Y%m%d%H%M%S) --set ma
 
 If the deployment must be triggered manually
 ```
-read -s MARIADB_PASSWORD && \
+read -sp "Enter value for MARIADB_PASSWORD=" MARIADB_PASSWORD && \
+echo && \
 helm install helm/demo-joomla/ --name demo-joomla-$(date +%Y%m%d%H%M%S) --set mariadb.password=${MARIADB_PASSWORD}
 ```
 
