@@ -29,7 +29,9 @@ Example:
 # Helm configuration
 
 In case Helm/Tiller are already configured, skip this section.
+
 If Tiller is not deployed, it can be started locally (which is in line with the proposal for Helm 3, which aims to remove Tiller)
+
 https://github.com/helm/helm/blob/master/docs/securing_installation.md#running-tiller-locally
 ```
 tiller --storage=configmap
@@ -43,6 +45,7 @@ export HELM_HOST=:44134
 
 # Database
 The database is deployed independently from Joomla
+
 https://github.com/helm/charts/blob/master/stable/mariadb
 
 ```
@@ -91,4 +94,5 @@ kubectl port-forward svc/demo-joomla  8080:8080
 
 # Initial Configuration
 When you initially access the application using `localhost:8080` you will be prompted to configure the database connection.
+
 Use `joomla-db-mariadb` for the 'Host Name' (which is the name of the k8s service), and `joomla` as the 'Database Name' field
