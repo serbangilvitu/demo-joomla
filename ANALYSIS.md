@@ -37,3 +37,6 @@ Collect, filter and strore logs using an ELK stack, or an equivalent solution.
 
 ## Autoscaling
 Achieve autoscaling by using the [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler), or by using a combination of Kubernetes node autoscaling (e.g. AWS autoscaling groups) and [Horizontal Pod Autoscalers](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+
+## Service Mesh
+Using a service mesh such as [Istio](https://istio.io/) will increase the the level of control over the traffic between services, allow encryption out of the box (without modifying existing applications), and offer better observability.
