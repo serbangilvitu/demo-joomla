@@ -1,0 +1,7 @@
+image:
+  demoJoomla:
+    repository: serbangilvitu/demo-joomla
+    # Tag is specified by .Chart.AppVersion
+  nginx:
+    repository: nginx
+    tag: 1.15.12

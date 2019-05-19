@@ -1,0 +1,17 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+    version: {{ .Chart.Version }}
+    appVersion: {{ .Chart.AppVersion }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  storageClassName: minikube
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi

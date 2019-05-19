@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-joomla
+spec:
+  selector:
+    app: demo-joomla
+    appVersion: 3.9.5
+  ports:
+  - name: http8080
+    protocol: TCP
+    port: 8080
+    targetPort: http8080
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http
