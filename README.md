@@ -89,6 +89,8 @@ kubectl apply -f k8s/service.yaml.example
 ## Generate service.yaml from a template
 To avoid manual changes to the service.yaml, a Jinja2 template is used instead.
 
+Using this approach, this step can be integrated into the CD pipeline.
+
 As a prerequisite, the jinja2 module needs to be installed
 ```
 pip3 install jinja2
