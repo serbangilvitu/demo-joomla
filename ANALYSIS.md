@@ -20,6 +20,7 @@ This would reduce the surface of attack in case an application is compromised.
 # Database
 The database is not production ready.
 Replication, automatic failover, and regular backups need to be configured.
+A dedicated user should be created for the application instead of using the root user.
 
 # Joomla
 The solution was created with the assumption that the application is able to run multiple instances in parallel (i.e. locking resources before modifying them).
