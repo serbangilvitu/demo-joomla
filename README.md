@@ -26,6 +26,21 @@ Example:
 ./build.sh 3.9.6
 ```
 
+# Helm configuration
+
+In case Helm/Tiller are already configured, skip this section.
+If Tiller is not deployed, it can be started locally (which is in line with the proposal for Helm 3, which aims to remove Tiller)
+https://github.com/helm/helm/blob/master/docs/securing_installation.md#running-tiller-locally
+```
+tiller --storage=configmap
+```
+
+In another terminal, export the HELM_HOST variable (can be included in .bashrc to avoid repeating this step)
+```
+export HELM_HOST=:44134
+```
+
+
 # Database
 The database is deployed independently from Joomla
 https://github.com/helm/charts/blob/master/stable/mariadb
@@ -45,23 +60,8 @@ Deploy MariaDB using a custom value file
 helm install stable/mariadb --name joomla-db --version 6.0.1 -f helm/maria-db/values.yaml
 ```
 
-# Configure Joomla
 
-## Database
-Use `joomla-db-mariadb` for the 'Host Name' (which is the name of the k8s service), and `joomla` as the 'Database Name' field
-
-## Deploy using Helm
-
-If Tiller is not deployed, it can be started locally (which is in line with the proposal for Helm 3, which aims to remove Tiller)
-https://github.com/helm/helm/blob/master/docs/securing_installation.md#running-tiller-locally
-```
-tiller --storage=configmap
-```
-
-In another terminal, export the HELM_HOST variable (can be included in .bashrc to avoid repeating this step)
-```
-export HELM_HOST=:44134
-```
+# Deploying demo-joomla using Helm
 
 Assuming the CD pipeline will inject the environment variable
 ```
@@ -89,3 +89,6 @@ Expose the service locally using port-forward
 kubectl port-forward svc/demo-joomla  8080:8080
 ```
 
+# Initial Configuration
+When you initially access the application using `localhost:8080` you will be prompted to configure the database connection.
+Use `joomla-db-mariadb` for the 'Host Name' (which is the name of the k8s service), and `joomla` as the 'Database Name' field
